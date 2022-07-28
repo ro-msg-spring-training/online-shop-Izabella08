@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS `supplier` (
+    `Id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `Name` varchar(20) NOT NULL
+);
