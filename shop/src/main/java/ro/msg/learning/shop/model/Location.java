@@ -16,9 +16,9 @@ import javax.persistence.Table;
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
 @Table(name="LOCATION")
 public class Location extends BaseEntity{
-    private String Name;
-    private String AddressCountry;
-    private String AddressCity;
-    private String AddressCounty;
-    private String AddressStreetAddress;
+    private String name;
+    private String addressCountry;
+    private String addressCity;
+    private String addressCounty;
+    private String addressStreetAddress;
 }

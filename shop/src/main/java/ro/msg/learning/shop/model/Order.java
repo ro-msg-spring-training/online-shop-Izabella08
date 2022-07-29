@@ -1,9 +1,6 @@
 package ro.msg.learning.shop.model;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import lombok.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -19,12 +16,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Table(name="ORDER_PRODUCT")
 public class Order extends BaseEntity{
     @ManyToOne(fetch = FetchType.EAGER)
-    private Location ShippedFrom;
+    @JoinColumn(name="location", insertable = false, updatable = false)
+    private Location shippedFrom;
     @ManyToOne(fetch = FetchType.EAGER)
-    private Customer Customer;
-    private LocalDateTime CreatedAt;
-    private String AddressCountry;
-    private String AddressCity;
-    private String AddressCounty;
-    private String AddressStreetAddress;
+    @JoinColumn(name="customer", insertable = false, updatable = false)
+    private Customer customer;
+    private LocalDateTime createdAt;
+    private String addressCountry;
+    private String addressCity;
+    private String addressCounty;
+    private String addressStreetAddress;
 }

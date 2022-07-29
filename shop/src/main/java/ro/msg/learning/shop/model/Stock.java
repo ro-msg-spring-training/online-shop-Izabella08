@@ -3,10 +3,7 @@ package ro.msg.learning.shop.model;
 import lombok.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -19,8 +16,10 @@ import javax.persistence.Table;
 @Table(name="STOCK")
 public class Stock extends BaseEntity{
     @ManyToOne(fetch = FetchType.EAGER)
-    private Product Product;
+    @JoinColumn(name="product", insertable = false, updatable = false)
+    private Product product;
     @ManyToOne(fetch = FetchType.EAGER)
-    private Location Location;
-    private Integer Quantity;
+    @JoinColumn(name="location", insertable = false, updatable = false)
+    private Location location;
+    private Integer quantity;
 }

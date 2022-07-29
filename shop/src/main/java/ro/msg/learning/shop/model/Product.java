@@ -3,11 +3,9 @@ package ro.msg.learning.shop.model;
 import lombok.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @Data
 @Entity
@@ -18,14 +16,18 @@ import java.math.BigDecimal;
 @EqualsAndHashCode
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
 @Table(name="PRODUCT")
+@Builder
 public class Product extends BaseEntity{
-    private String Name;
-    private String Description;
-    private BigDecimal Price;
-    private double Weight;
+    private String name;
+    private String description;
+    private BigDecimal price;
+    private double weight;
     @ManyToOne(fetch = FetchType.EAGER)
-    private ProductCategory Category;
+    @JoinColumn(name="productCategory", insertable = false, updatable = false)
+    private ProductCategory category;
     @ManyToOne(fetch = FetchType.EAGER)
-    private Supplier Supplier;
-    private String ImageUrl;
+    @JoinColumn(name="supplier", insertable = false, updatable = false)
+    private Supplier supplier;
+    private String imageUrl;
+
 }

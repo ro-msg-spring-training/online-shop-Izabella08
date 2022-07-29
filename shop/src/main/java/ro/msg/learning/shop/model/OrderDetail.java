@@ -3,10 +3,7 @@ package ro.msg.learning.shop.model;
 import lombok.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -16,11 +13,13 @@ import javax.persistence.Table;
 @Setter
 @EqualsAndHashCode
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
-@Table(name="ORDERDETAIL")
+@Table(name="ORDER_DETAIL")
 public class OrderDetail extends BaseEntity{
     @ManyToOne(fetch = FetchType.EAGER)
-    private Order Order;
+    @JoinColumn(name="order", insertable = false, updatable = false)
+    private Order order;
     @ManyToOne(fetch = FetchType.EAGER)
-    private Product Product;
-    private Integer Quantity;
+    @JoinColumn(name="product", insertable = false, updatable = false)
+    private Product product;
+    private Integer quantity;
 }

@@ -14,8 +14,9 @@ import javax.persistence.Table;
 @Setter
 @EqualsAndHashCode
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
-@Table(name="PRODUCTCATEGORY")
+@Table(name="PRODUCT_CATEGORY")
+@Builder
 public class ProductCategory extends BaseEntity{
-    private String Name;
-    private String Description;
+    private String name;
+    private String description;
 }

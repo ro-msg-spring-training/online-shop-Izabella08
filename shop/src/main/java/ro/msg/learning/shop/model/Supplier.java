@@ -15,6 +15,7 @@ import javax.persistence.Table;
 @EqualsAndHashCode
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
 @Table(name="SUPPLIER")
+@Builder
 public class Supplier extends BaseEntity{
-    private String Name;
+    private String name;
 }

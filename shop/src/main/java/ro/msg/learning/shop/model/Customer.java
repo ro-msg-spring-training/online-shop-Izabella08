@@ -16,9 +16,9 @@ import javax.persistence.Table;
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
 @Table(name="CUSTOMER")
 public class Customer extends BaseEntity{
-    private String FirstName;
-    private String LastName;
-    private String Username;
-    private String Password;
-    private String EmailAddress;
+    private String firstName;
+    private String lastName;
+    private String username;
+    private String password;
+    private String emailAddress;
 }
