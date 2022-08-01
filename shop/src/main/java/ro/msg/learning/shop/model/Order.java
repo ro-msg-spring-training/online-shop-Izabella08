@@ -2,6 +2,9 @@ package ro.msg.learning.shop.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
@@ -14,16 +17,23 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EqualsAndHashCode
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
 @Table(name="ORDER_PRODUCT")
+@ToString(exclude = "orderDetails")
 public class Order extends BaseEntity{
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="location", insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name="shippedFrom")
+    @JsonIgnore
     private Location shippedFrom;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="customer", insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name="customer")
+    @JsonIgnore
     private Customer customer;
     private LocalDateTime createdAt;
     private String addressCountry;
     private String addressCity;
     private String addressCounty;
     private String addressStreetAddress;
+
+    @OneToMany(mappedBy = "order")
+    @JsonIgnore
+    private List<OrderDetail> orderDetails;
 }

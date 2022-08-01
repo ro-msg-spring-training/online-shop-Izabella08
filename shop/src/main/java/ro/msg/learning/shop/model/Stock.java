@@ -1,6 +1,7 @@
 package ro.msg.learning.shop.model;
 
 import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.persistence.*;
@@ -15,11 +16,13 @@ import javax.persistence.*;
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
 @Table(name="STOCK")
 public class Stock extends BaseEntity{
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="product", insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name="product")
+    @JsonIgnore
     private Product product;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="location", insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name="location")
+    @JsonIgnore
     private Location location;
     private Integer quantity;
 }

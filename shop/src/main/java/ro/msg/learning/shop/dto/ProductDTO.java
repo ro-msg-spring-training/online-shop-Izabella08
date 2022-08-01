@@ -6,8 +6,6 @@ import ro.msg.learning.shop.model.Supplier;
 
 import java.math.BigDecimal;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Data
 public class ProductDTO {

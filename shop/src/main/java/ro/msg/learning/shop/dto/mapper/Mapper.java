@@ -15,11 +15,15 @@ public class Mapper {
     public ProductCategoryDTO productCategoryToDTO(ProductCategory productCategory) {
         return ProductCategoryDTO.builder()
                 .categoryId(productCategory.getId())
+                .categoryName(productCategory.getName())
+                .categoryDescription(productCategory.getDescription())
                 .build();
     }
 
     public ProductCategory DTOToProductCategory(ProductCategoryDTO productCategoryDto) {
         ProductCategory newProd = ProductCategory.builder()
+                .name(productCategoryDto.getCategoryName())
+                .description(productCategoryDto.getCategoryDescription())
                 .build();
         newProd.setId(productCategoryDto.getCategoryId());
         return newProd;
@@ -28,17 +32,19 @@ public class Mapper {
     public SupplierDTO supplierToDTO(Supplier supplier) {
         return SupplierDTO.builder()
                 .supplierId(supplier.getId())
+                .supplierName(supplier.getName())
                 .build();
     }
 
     public Supplier DTOToSupplier(SupplierDTO supplierDto) {
         Supplier newSupplier = Supplier.builder()
+                .name(supplierDto.getSupplierName())
                 .build();
         newSupplier.setId(supplierDto.getSupplierId());
         return newSupplier;
     }
 
-    public ProductDTO productToDto(Product product) {
+    public ProductDTO productToDTO(Product product) {
         return ProductDTO.builder()
                 .productId(product.getId())
                 .productName(product.getName())
@@ -51,7 +57,7 @@ public class Mapper {
                 .build();
     }
 
-    public Product dtoToProduct(ProductDTO productDto) {
+    public Product DTOToProduct(ProductDTO productDto) {
         Product newProduct = Product.builder()
                 .name(productDto.getProductName())
                 .description(productDto.getProductDescription())

@@ -29,7 +29,7 @@ public class SupplierController {
         return new ResponseEntity<>(supplierService.getAllSuppliers(), HttpStatus.OK);
     }
 
-    @GetMapping(value="/supplier/{id}")
+    @GetMapping(value="/get_supplier_by_id/{id}")
     private Optional<Supplier> getSupplierById(@PathVariable Integer id){
         return supplierService.getSupplierById(id);
     }
