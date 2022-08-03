@@ -19,7 +19,7 @@ public class ProductCategoryController {
     }
 
     @PostMapping(value="/category")
-    private ResponseEntity<Object> createCategory(@RequestBody ProductCategory productCategory) {
+    public ResponseEntity<Object> createCategory(@RequestBody ProductCategory productCategory) {
         categoryService.createCategory(productCategory);
         return new ResponseEntity<>("Category created successfully!", HttpStatus.CREATED);
     }
@@ -30,7 +30,7 @@ public class ProductCategoryController {
     }
 
     @GetMapping(value="/get_category_by_id/{id}")
-    private Optional<ProductCategory> getCategoryById(@PathVariable  Integer id){
+    public Optional<ProductCategory> getCategoryById(@PathVariable  Integer id){
         return categoryService.getCategoryById(id);
     }
 }

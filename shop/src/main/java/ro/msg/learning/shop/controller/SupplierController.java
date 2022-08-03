@@ -19,7 +19,7 @@ public class SupplierController {
     }
 
     @PostMapping(value="/supplier")
-    private ResponseEntity<Object> createSupplier(@RequestBody Supplier supplier) {
+    public ResponseEntity<Object> createSupplier(@RequestBody Supplier supplier) {
         supplierService.createSupplier(supplier);
         return new ResponseEntity<>("Supplier created successfully!", HttpStatus.CREATED);
     }
@@ -30,7 +30,7 @@ public class SupplierController {
     }
 
     @GetMapping(value="/get_supplier_by_id/{id}")
-    private Optional<Supplier> getSupplierById(@PathVariable Integer id){
+    public Optional<Supplier> getSupplierById(@PathVariable Integer id){
         return supplierService.getSupplierById(id);
     }
 }
