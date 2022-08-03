@@ -2,6 +2,7 @@ package ro.msg.learning.shop.model;
 
 import lombok.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ import java.util.List;
 @EqualsAndHashCode
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
 @Table(name="SUPPLIER")
-@Builder
+@SuperBuilder
 @ToString(exclude = "products")
 public class Supplier extends BaseEntity{
     @OneToMany(mappedBy = "supplier")

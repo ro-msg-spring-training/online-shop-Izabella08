@@ -10,7 +10,7 @@ import ro.msg.learning.shop.model.Supplier;
 
 
 @Component
-public class Mapper {
+public class ProductMapper {
 
     public ProductCategoryDTO productCategoryToDTO(ProductCategory productCategory) {
         return ProductCategoryDTO.builder()

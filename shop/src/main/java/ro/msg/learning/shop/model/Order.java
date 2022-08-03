@@ -6,7 +6,9 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
 
 @Data
 @Entity
@@ -15,6 +17,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Getter
 @Setter
 @EqualsAndHashCode
+@SuperBuilder
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
 @Table(name="ORDER_PRODUCT")
 @ToString(exclude = "orderDetails")

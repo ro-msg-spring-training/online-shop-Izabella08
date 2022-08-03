@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS `location` (
 CREATE TABLE IF NOT EXISTS `stock` (
     `product` int NOT NULL REFERENCES product(id),
     `location` int NOT NULL REFERENCES location(id),
-    `quantity` int NOT NULL
+    `quantity` int NOT NULL,
+    `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY
     );
 
 CREATE TABLE IF NOT EXISTS `order_product` (
@@ -56,7 +57,8 @@ CREATE TABLE IF NOT EXISTS `order_product` (
     );
 
 CREATE TABLE IF NOT EXISTS `order_detail` (
-    `order` int NOT NULL REFERENCES order_product(id),
+    `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `orderp` int NOT NULL REFERENCES order_product(id),
     `product` int NOT NULL REFERENCES product(id),
     `quantity` int NOT NULL
     );

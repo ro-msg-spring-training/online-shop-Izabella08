@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.msg.learning.shop.dto.ProductDTO;
-import ro.msg.learning.shop.dto.mapper.Mapper;
+import ro.msg.learning.shop.dto.mapper.ProductMapper;
 import ro.msg.learning.shop.model.Product;
 import ro.msg.learning.shop.service.ProductService;
 
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class ProductController {
     @Autowired
     ProductService productService;
-    private Mapper mapper = new Mapper();
+    private ProductMapper productMapper = new ProductMapper();
 
     @GetMapping(value = "/products")
     public ResponseEntity<Object> getProducts() {
@@ -24,7 +24,7 @@ public class ProductController {
 
     @PostMapping(value="/new_product")
     private ResponseEntity<Object> createProduct(@RequestBody ProductDTO productDTO){
-        Product product = mapper.DTOToProduct(productDTO);
+        Product product = productMapper.DTOToProduct(productDTO);
         productService.createProduct(product);
         return new ResponseEntity<>("Product created successfully!", HttpStatus.CREATED);
     }
@@ -43,7 +43,7 @@ public class ProductController {
     @PutMapping("/update_product/{id}")
     public ResponseEntity<Object> updateProduct(@RequestBody ProductDTO productDTO, @PathVariable Integer id)
     {
-        Product product = mapper.DTOToProduct(productDTO);
+        Product product = productMapper.DTOToProduct(productDTO);
         productService.updateProduct(product);
         return new ResponseEntity<>("Product edited successfully!", HttpStatus.OK);
     }
