@@ -21,7 +21,7 @@ public class OrderDetail extends BaseEntity{
     @ManyToOne
     @JoinColumn(name="orderp")
     @JsonIgnore
-    private Order order;
+    private Order orderp;
 
     @ManyToOne
     @JoinColumn(name="product")

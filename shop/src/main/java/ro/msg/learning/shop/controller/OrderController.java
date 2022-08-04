@@ -25,8 +25,7 @@ public class OrderController {
         this.productRepository = productRepository;
     }
 
-
-    @PostMapping(value="/new_order/{customerId}")
+    @PostMapping(value="/new-order/{customerId}")
     public ResponseEntity<Object> addOrder(@RequestBody OrderDTO orderDTO, @PathVariable Integer customerId) throws Exception {
         Order order = orderMapper.dtoToModel(orderDTO);
         List<OrderDetail> orderDetailList = new ArrayList<>();

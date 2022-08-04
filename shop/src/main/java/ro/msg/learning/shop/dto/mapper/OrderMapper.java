@@ -7,9 +7,8 @@ import ro.msg.learning.shop.model.Order;
 
 @Component
 public class OrderMapper {
-
     public Order dtoToModel(OrderDTO dto) {
-       Order newOrder = Order.builder()
+      return Order.builder()
                 .id(dto.getId())
                 .createdAt(dto.getCreatedAt())
                 .addressCountry(dto.getAddressCountry())
@@ -17,7 +16,5 @@ public class OrderMapper {
                 .addressCounty(dto.getAddressCounty())
                 .addressStreetAddress(dto.getAddressStreetAddress())
                 .build();
-       return newOrder;
     }
-
 }

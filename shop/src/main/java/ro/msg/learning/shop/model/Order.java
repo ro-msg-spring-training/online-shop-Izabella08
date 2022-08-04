@@ -36,17 +36,17 @@ public class Order extends BaseEntity{
     private String addressCounty;
     private String addressStreetAddress;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "orderp")
     @JsonIgnore
     private List<OrderDetail> orderDetails;
 
-//    public Order(Location shippedFrom, Customer customer, LocalDateTime createdAt, String addressCountry, String addressCity, String addressCounty, String addressStreetAddress) {
-//        this.shippedFrom = shippedFrom;
-//        this.customer = customer;
-//        this.createdAt = createdAt;
-//        this.addressCountry = addressCountry;
-//        this.addressCity = addressCity;
-//        this.addressCounty = addressCounty;
-//        this.addressStreetAddress = addressStreetAddress;
-//    }
+    public Order(Location shippedFrom, Customer customer, LocalDateTime createdAt, String addressCountry, String addressCity, String addressCounty, String addressStreetAddress) {
+        this.shippedFrom = shippedFrom;
+        this.customer = customer;
+        this.createdAt = createdAt;
+        this.addressCountry = addressCountry;
+        this.addressCity = addressCity;
+        this.addressCounty = addressCounty;
+        this.addressStreetAddress = addressStreetAddress;
+    }
 }

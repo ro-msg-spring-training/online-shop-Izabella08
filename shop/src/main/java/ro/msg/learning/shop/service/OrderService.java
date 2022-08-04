@@ -31,7 +31,7 @@ public class OrderService {
         order.setCustomer(customer);
         Order savedOrder = orderRepository.save(order);
         orderDetails.forEach((orderDetail) -> {
-                    orderDetail.setOrder(savedOrder);
+                    orderDetail.setOrderp(savedOrder);
                     orderDetailRepository.save(orderDetail);
                 }
         );
