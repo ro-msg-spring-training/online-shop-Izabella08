@@ -1,15 +1,11 @@
 package ro.msg.learning.shop.service;
 
 import org.springframework.stereotype.Service;
-import ro.msg.learning.shop.dto.mapper.SupplierMapper;
 import ro.msg.learning.shop.exception.CanNotFindProductException;
 import ro.msg.learning.shop.model.Product;
-import ro.msg.learning.shop.repository.IProductCategoryRepository;
 import ro.msg.learning.shop.repository.IProductRepository;
-import ro.msg.learning.shop.repository.ISupplierRepository;
 
 import java.util.List;
-import java.util.Optional;
 @Service
 public class ProductService {
     private final IProductRepository productRepository;
@@ -27,8 +23,8 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public Optional<Product> getProductById(Integer id) {
-        return productRepository.findById(id);
+    public Product getProductById(Integer id) {
+        return productRepository.findById(id).get();
     }
 
     public void deleteProductById(Integer id) {

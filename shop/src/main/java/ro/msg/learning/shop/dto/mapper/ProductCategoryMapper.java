@@ -15,4 +15,12 @@ public class ProductCategoryMapper {
         newProd.setId(productCategoryDto.getCategoryId());
         return newProd;
     }
+
+    public ProductCategoryDTO productCategoryToDTO(ProductCategory productCategory) {
+        return ProductCategoryDTO.builder()
+                .categoryId(productCategory.getId())
+                .categoryName(productCategory.getName())
+                .categoryDescription(productCategory.getDescription())
+                .build();
+    }
 }

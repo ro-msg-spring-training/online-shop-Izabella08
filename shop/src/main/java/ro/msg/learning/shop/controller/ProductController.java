@@ -1,6 +1,5 @@
 package ro.msg.learning.shop.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,33 +8,46 @@ import ro.msg.learning.shop.dto.mapper.ProductMapper;
 import ro.msg.learning.shop.model.Product;
 import ro.msg.learning.shop.service.ProductService;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class ProductController {
-    @Autowired
-    ProductService productService;
+    private final ProductService productService;
     private final ProductMapper productMapper;
 
-    public ProductController(ProductMapper productMapper) {
+    public ProductController(ProductService productService, ProductMapper productMapper) {
+        this.productService = productService;
         this.productMapper = productMapper;
     }
 
     @GetMapping(value = "/products")
-    public ResponseEntity<Object> getProducts() {
-        return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
+    public ResponseEntity<List<ProductDTO>> getProducts() {
+        List<Product> productEntitiesAfterSave = productService.getAllProducts();
+        List<ProductDTO> productDTOListAfterSave = new ArrayList<>();
+        productEntitiesAfterSave.forEach(
+                product -> {
+                    ProductDTO productDTOAfterSave = productMapper.productToDTO(product);
+                    productDTOListAfterSave.add(productDTOAfterSave);
+                }
+        );
+        return new ResponseEntity<>(productDTOListAfterSave, HttpStatus.OK);
     }
 
     @PostMapping(value="/new-product")
-    public ResponseEntity<Object> createProduct(@RequestBody ProductDTO productDTO){
-        Product product = productMapper.DTOToProduct(productDTO);
-        productService.createProduct(product);
-        return new ResponseEntity<>("Product created successfully!", HttpStatus.CREATED);
+    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTOFromFE){
+        Product productEntityForService = productMapper.DTOToProduct(productDTOFromFE);
+        Product productEntityAfterSave = productService.createProduct(productEntityForService);
+        ProductDTO productDTOAfterSave = productMapper.productToDTO(productEntityAfterSave);
+
+        return new ResponseEntity<>(productDTOAfterSave, HttpStatus.CREATED);
     }
 
     @GetMapping(value="/get-by-id/{id}")
-    public Optional<Product> getProductById(@PathVariable Integer id){
-        return productService.getProductById(id);
+    public ProductDTO getProductById(@PathVariable Integer id){
+        Product product  = productService.getProductById(id);
+        ProductDTO productDTO = productMapper.productToDTO(product);
+        return productDTO;
     }
 
     @DeleteMapping(value="/delete-product/{id}")
@@ -45,10 +57,11 @@ public class ProductController {
     }
 
     @PutMapping("/update-product/{id}")
-    public ResponseEntity<Object> updateProduct(@RequestBody ProductDTO productDTO, @PathVariable Integer id)
+    public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO productDTOFromFE, @PathVariable Integer id)
     {
-        Product product = productMapper.DTOToProduct(productDTO);
-        productService.updateProduct(product);
-        return new ResponseEntity<>("Product edited successfully!", HttpStatus.OK);
+        Product productEntityForService = productMapper.DTOToProduct(productDTOFromFE);
+        Product productEntityAfterSave = productService.updateProduct(productEntityForService);
+        ProductDTO productDTOAfterSave = productMapper.productToDTO(productEntityAfterSave);
+        return new ResponseEntity<>(productDTOAfterSave, HttpStatus.OK);
     }
 }

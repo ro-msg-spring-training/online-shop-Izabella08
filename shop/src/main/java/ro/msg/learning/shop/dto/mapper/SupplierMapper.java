@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 import ro.msg.learning.shop.dto.SupplierDTO;
 import ro.msg.learning.shop.model.Supplier;
 
+import java.util.Optional;
+
 
 @Component
 public class SupplierMapper {
@@ -16,4 +18,10 @@ public class SupplierMapper {
         return newSupplier;
     }
 
+    public SupplierDTO supplierToDTO(Supplier supplier) {
+        return SupplierDTO.builder()
+                .supplierId(supplier.getId())
+                .supplierName(supplier.getName())
+                .build();
+    }
 }

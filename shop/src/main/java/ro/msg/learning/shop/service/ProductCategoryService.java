@@ -5,7 +5,6 @@ import ro.msg.learning.shop.model.ProductCategory;
 import ro.msg.learning.shop.repository.IProductCategoryRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductCategoryService {
@@ -23,7 +22,7 @@ public class ProductCategoryService {
         return productCategoryRepository.findAll();
     }
 
-    public Optional<ProductCategory> getCategoryById(Integer id){
-        return productCategoryRepository.findById(id);
+    public ProductCategory getCategoryById(Integer id){
+        return productCategoryRepository.findById(id).get();
     }
 }

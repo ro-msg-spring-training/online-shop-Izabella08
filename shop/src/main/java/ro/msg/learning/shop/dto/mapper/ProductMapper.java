@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 import ro.msg.learning.shop.dto.ProductDTO;
 import ro.msg.learning.shop.model.Product;
 
+import java.util.Optional;
+
 @Component
 public class ProductMapper {
     private final SupplierMapper supplierMapper;
@@ -26,6 +28,19 @@ public class ProductMapper {
                 .build();
         newProduct.setId(productDto.getProductId());
         return newProduct;
+    }
+
+    public ProductDTO productToDTO(Product product) {
+        return ProductDTO.builder()
+                .productId(product.getId())
+                .productName(product.getName())
+                .productDescription(product.getDescription())
+                .productPrice(product.getPrice())
+                .productWeight(product.getWeight())
+                .supplier(supplierMapper.supplierToDTO(product.getSupplier()))
+                .productCategory(productCategoryMapper.productCategoryToDTO(product.getCategory()))
+                .productImageUrl(product.getImageUrl())
+                .build();
     }
 
 }

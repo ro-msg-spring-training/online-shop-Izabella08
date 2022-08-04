@@ -5,7 +5,6 @@ import ro.msg.learning.shop.model.Supplier;
 import ro.msg.learning.shop.repository.ISupplierRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SupplierService {
@@ -23,8 +22,8 @@ public class SupplierService {
         return supplierRepository.findAll();
     }
 
-    public Optional<Supplier> getSupplierById(Integer id){
-        return supplierRepository.findById(id);
+    public Supplier getSupplierById(Integer id){
+        return supplierRepository.findById(id).get();
     }
 
 }
