@@ -2,6 +2,7 @@ package ro.msg.learning.shop.model;
 
 import lombok.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.persistence.Entity;
@@ -16,6 +17,7 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode
+@SuperBuilder
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
 @Table(name="CUSTOMER")
 @ToString(exclude = "orders")
@@ -30,4 +32,12 @@ public class Customer extends BaseEntity{
     private String username;
     private String password;
     private String emailAddress;
+
+    public Customer(String firstName, String lastName, String username, String password, String emailAddress) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.emailAddress = emailAddress;
+    }
 }

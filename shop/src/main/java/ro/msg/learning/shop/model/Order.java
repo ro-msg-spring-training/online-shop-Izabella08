@@ -6,7 +6,9 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
 
 @Data
 @Entity
@@ -15,6 +17,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Getter
 @Setter
 @EqualsAndHashCode
+@SuperBuilder
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
 @Table(name="ORDER_PRODUCT")
 @ToString(exclude = "orderDetails")
@@ -33,7 +36,17 @@ public class Order extends BaseEntity{
     private String addressCounty;
     private String addressStreetAddress;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "orderp")
     @JsonIgnore
     private List<OrderDetail> orderDetails;
+
+    public Order(Location shippedFrom, Customer customer, LocalDateTime createdAt, String addressCountry, String addressCity, String addressCounty, String addressStreetAddress) {
+        this.shippedFrom = shippedFrom;
+        this.customer = customer;
+        this.createdAt = createdAt;
+        this.addressCountry = addressCountry;
+        this.addressCity = addressCity;
+        this.addressCounty = addressCounty;
+        this.addressStreetAddress = addressStreetAddress;
+    }
 }

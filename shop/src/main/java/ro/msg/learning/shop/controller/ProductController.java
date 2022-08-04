@@ -1,6 +1,5 @@
 package ro.msg.learning.shop.controller;
-
-import jdk.internal.org.jline.utils.Status;
+import ch.qos.logback.core.status.Status;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

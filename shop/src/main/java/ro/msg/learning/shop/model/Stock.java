@@ -2,6 +2,7 @@ package ro.msg.learning.shop.model;
 
 import lombok.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @EqualsAndHashCode
+@SuperBuilder
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
 @Table(name="STOCK")
 public class Stock extends BaseEntity{

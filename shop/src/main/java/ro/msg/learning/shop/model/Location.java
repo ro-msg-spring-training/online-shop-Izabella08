@@ -2,6 +2,7 @@ package ro.msg.learning.shop.model;
 
 import lombok.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.persistence.Entity;
@@ -16,6 +17,7 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode
+@SuperBuilder
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
 @Table(name="LOCATION")
 @ToString(exclude = {"stocks, shippedFrom"})
@@ -32,4 +34,12 @@ public class Location extends BaseEntity{
     private String addressCity;
     private String addressCounty;
     private String addressStreetAddress;
+
+    public Location(String name, String addressCountry, String addressCity, String addressCounty, String addressStreetAddress) {
+        this.name = name;
+        this.addressCountry = addressCountry;
+        this.addressCity = addressCity;
+        this.addressCounty = addressCounty;
+        this.addressStreetAddress = addressStreetAddress;
+    }
 }
