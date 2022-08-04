@@ -35,7 +35,6 @@ public class OrderController {
                     orderDetailList.add(new OrderDetail(order, productRepository.findById(key).get(), value));
                 }
         );
-        //order.setOrderDetails(orderDetailList);
         try{
             orderService.createOrder(orderDetailList, customerId, order);
             return new ResponseEntity<>("Order created successfully!", HttpStatus.CREATED);

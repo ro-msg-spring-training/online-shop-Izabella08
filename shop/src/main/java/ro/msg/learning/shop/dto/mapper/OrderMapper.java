@@ -12,10 +12,10 @@ public class OrderMapper {
        Order newOrder = Order.builder()
                 .id(dto.getId())
                 .createdAt(dto.getCreatedAt())
-                .addressCountry(dto.getAddress_country())
-                .addressCity(dto.getAddress_city())
-                .addressCounty(dto.getAddress_county())
-                .addressStreetAddress(dto.getAddress_streetAddress())
+                .addressCountry(dto.getAddressCountry())
+                .addressCity(dto.getAddressCity())
+                .addressCounty(dto.getAddressCounty())
+                .addressStreetAddress(dto.getAddressStreetAddress())
                 .build();
        return newOrder;
     }

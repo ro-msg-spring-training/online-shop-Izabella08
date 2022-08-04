@@ -13,9 +13,9 @@ import java.util.Map;
 public class OrderDTO {
     private Integer id;
     private LocalDateTime createdAt;
-    private String address_country;
-    private String address_city;
-    private String address_county;
-    private String address_streetAddress;
+    private String addressCountry;
+    private String addressCity;
+    private String addressCounty;
+    private String addressStreetAddress;
     private Map<Integer, Integer> products;
 }

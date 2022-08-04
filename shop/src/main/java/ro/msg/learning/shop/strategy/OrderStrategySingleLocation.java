@@ -1,5 +1,6 @@
 package ro.msg.learning.shop.strategy;
 
+import ro.msg.learning.shop.exception.CanNotFindStockException;
 import ro.msg.learning.shop.model.Location;
 import ro.msg.learning.shop.model.OrderDetail;
 import ro.msg.learning.shop.model.Stock;
@@ -46,7 +47,7 @@ public class OrderStrategySingleLocation implements IOrderStrategy {
                     if (foundStock != null) {
                         return foundStock;
                     } else {
-                        throw new RuntimeException();
+                        throw new CanNotFindStockException("Can not find enough products in stock");
                     }
                 }
         ).collect(Collectors.toList());

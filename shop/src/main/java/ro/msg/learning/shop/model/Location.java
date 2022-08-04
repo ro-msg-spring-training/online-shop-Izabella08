@@ -35,11 +35,11 @@ public class Location extends BaseEntity{
     private String addressCounty;
     private String addressStreetAddress;
 
-    public Location(String name, String addressCountry, String addressCity, String addressCounty, String addressStreetAddress) {
-        this.name = name;
-        this.addressCountry = addressCountry;
-        this.addressCity = addressCity;
-        this.addressCounty = addressCounty;
-        this.addressStreetAddress = addressStreetAddress;
-    }
+//    public Location(String name, String addressCountry, String addressCity, String addressCounty, String addressStreetAddress) {
+//        this.name = name;
+//        this.addressCountry = addressCountry;
+//        this.addressCity = addressCity;
+//        this.addressCounty = addressCounty;
+//        this.addressStreetAddress = addressStreetAddress;
+//    }
 }
