@@ -44,16 +44,16 @@ public class ProductController {
     }
 
     @GetMapping(value="/get-by-id/{id}")
-    public ProductDTO getProductById(@PathVariable Integer id){
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable Integer id){
         Product product  = productService.getProductById(id);
         ProductDTO productDTO = productMapper.productToDTO(product);
-        return productDTO;
+        return new ResponseEntity<>(productDTO, HttpStatus.CREATED);
     }
 
     @DeleteMapping(value="/delete-product/{id}")
-    public ResponseEntity<Object> deleteProductById(@PathVariable Integer id){
+    public ResponseEntity deleteProductById(@PathVariable Integer id){
         productService.deleteProductById(id);
-        return new ResponseEntity<>("Product deleted successfully!", HttpStatus.OK);
+        return new ResponseEntity("Product deleted successfully!", HttpStatus.OK);
     }
 
     @PutMapping("/update-product/{id}")

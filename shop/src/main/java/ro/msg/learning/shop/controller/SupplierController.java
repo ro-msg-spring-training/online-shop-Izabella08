@@ -46,11 +46,11 @@ public class SupplierController {
     }
 
     @GetMapping(value="/get-supplier-by-id/{id}")
-    public SupplierDTO getSupplierById(@PathVariable Integer id){
+    public ResponseEntity<SupplierDTO> getSupplierById(@PathVariable Integer id){
 
         Supplier supplier = supplierService.getSupplierById(id);
         SupplierDTO supplierDTO = supplierMapper.supplierToDTO(supplier);
 
-        return supplierDTO;
+        return new ResponseEntity<>(supplierDTO, HttpStatus.OK);
     }
 }

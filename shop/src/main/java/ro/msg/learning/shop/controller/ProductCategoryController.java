@@ -4,15 +4,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.msg.learning.shop.dto.ProductCategoryDTO;
-import ro.msg.learning.shop.dto.ProductDTO;
 import ro.msg.learning.shop.dto.mapper.ProductCategoryMapper;
-import ro.msg.learning.shop.model.Product;
 import ro.msg.learning.shop.model.ProductCategory;
 import ro.msg.learning.shop.service.ProductCategoryService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class ProductCategoryController {
@@ -48,10 +45,10 @@ public class ProductCategoryController {
     }
 
     @GetMapping(value="/get-category-by-id/{id}")
-    public ProductCategoryDTO getCategoryById(@PathVariable  Integer id){
+    public ResponseEntity<ProductCategoryDTO> getCategoryById(@PathVariable  Integer id){
 
         ProductCategory productCategory = categoryService.getCategoryById(id);
         ProductCategoryDTO productCategoryDTO = productCategoryMapper.productCategoryToDTO(productCategory);
-        return productCategoryDTO;
+        return new ResponseEntity<>(productCategoryDTO, HttpStatus.OK);
     }
 }
