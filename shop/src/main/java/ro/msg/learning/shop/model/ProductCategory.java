@@ -27,4 +27,10 @@ public class ProductCategory extends BaseEntity{
     private List<Product> products;
     private String name;
     private String description;
+
+
+    public ProductCategory(String categoryName, String categoryDescription) {
+        this.name = categoryName;
+        this.description = categoryDescription;
+    }
 }

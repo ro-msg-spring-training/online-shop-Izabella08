@@ -26,4 +26,8 @@ public class Supplier extends BaseEntity{
     @JsonIgnore
     private List<Product> products;
     private String name;
+
+    public Supplier(String name){
+        this.name = name;
+    }
 }
