@@ -1,5 +1,6 @@
 package ro.msg.learning.shop.controller;
 
+import jdk.internal.org.jline.utils.Status;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,9 +52,9 @@ public class ProductController {
     }
 
     @DeleteMapping(value="/delete-product/{id}")
-    public ResponseEntity deleteProductById(@PathVariable Integer id){
+    public ResponseEntity<Status> deleteProductById(@PathVariable Integer id){
         productService.deleteProductById(id);
-        return new ResponseEntity("Product deleted successfully!", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/update-product/{id}")

@@ -4,8 +4,6 @@ import org.springframework.stereotype.Component;
 import ro.msg.learning.shop.dto.ProductDTO;
 import ro.msg.learning.shop.model.Product;
 
-import java.util.Optional;
-
 @Component
 public class ProductMapper {
     private final SupplierMapper supplierMapper;
