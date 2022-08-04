@@ -6,14 +6,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-@MappedSuperclass
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
-public class BaseEntity {
+@SuperBuilder
+@MappedSuperclass
+public class BaseEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;

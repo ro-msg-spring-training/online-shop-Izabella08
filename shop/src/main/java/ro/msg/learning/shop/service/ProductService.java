@@ -2,14 +2,15 @@ package ro.msg.learning.shop.service;
 
 import org.springframework.stereotype.Service;
 import ro.msg.learning.shop.exception.CanNotFindProductException;
+import ro.msg.learning.shop.dto.mapper.ProductMapper;
 import ro.msg.learning.shop.model.Product;
+import ro.msg.learning.shop.repository.IProductCategoryRepository;
 import ro.msg.learning.shop.repository.IProductRepository;
 
 import java.util.List;
 @Service
 public class ProductService {
     private final IProductRepository productRepository;
-
 
     public ProductService(IProductRepository productRepository) {
         this.productRepository = productRepository;

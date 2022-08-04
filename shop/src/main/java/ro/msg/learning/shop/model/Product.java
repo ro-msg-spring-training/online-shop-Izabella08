@@ -2,6 +2,7 @@ package ro.msg.learning.shop.model;
 
 import lombok.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.persistence.*;
@@ -17,7 +18,7 @@ import java.util.List;
 @EqualsAndHashCode
 @EnableJpaRepositories(basePackages = "ro.msg.learning.shop.repository")
 @Table(name="PRODUCT")
-@Builder
+@SuperBuilder
 @ToString(exclude = {"stocks", "orders"})
 public class Product extends BaseEntity{
     @OneToMany(mappedBy = "product")
@@ -42,4 +43,13 @@ public class Product extends BaseEntity{
     private Supplier supplier;
     private String imageUrl;
 
+//    public Product(String name, String description, BigDecimal price, double weight, ProductCategory category, Supplier supplier, String imageUrl) {
+//        this.name = name;
+//        this.description = description;
+//        this.price = price;
+//        this.weight = weight;
+//        this.category = category;
+//        this.supplier = supplier;
+//        this.imageUrl = imageUrl;
+//    }
 }
