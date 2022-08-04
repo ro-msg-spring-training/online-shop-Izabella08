@@ -29,7 +29,7 @@ public class ProductCategoryController {
         return new ResponseEntity<>(categoryService.getAllProductCategories(), HttpStatus.OK);
     }
 
-    @GetMapping(value="/get_category_by_id/{id}")
+    @GetMapping(value="/get-category-by-id/{id}")
     public Optional<ProductCategory> getCategoryById(@PathVariable  Integer id){
         return categoryService.getCategoryById(id);
     }

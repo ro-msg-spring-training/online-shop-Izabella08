@@ -13,18 +13,10 @@ import java.util.Optional;
 @Service
 public class ProductService {
     private final IProductRepository productRepository;
-    private final IProductCategoryRepository productCategoryRepository;
-    private final ISupplierRepository supplierRepository;
-    private final SupplierMapper supplierMapper;
 
-    private final ProductCategoryService productCategoryService;
 
-    public ProductService(IProductRepository productRepository, IProductCategoryRepository productCategoryRepository, ISupplierRepository supplierRepository, SupplierMapper supplierMapper, ProductCategoryService productCategoryService) {
+    public ProductService(IProductRepository productRepository) {
         this.productRepository = productRepository;
-        this.productCategoryRepository = productCategoryRepository;
-        this.supplierRepository = supplierRepository;
-        this.supplierMapper = supplierMapper;
-        this.productCategoryService = productCategoryService;
     }
 
     public List<Product> getAllProducts() {
